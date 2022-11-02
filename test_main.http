@@ -1,0 +1,27 @@
+# Test your FastAPI endpoints
+
+GET http://127.0.0.1:8000/v1/vehicle/get/SCA1S684X4UX07444
+Accept: application/json
+
+###
+
+POST http://127.0.0.1:8000/v1/vehicle/
+Content-Type: application/json
+
+{
+  "manufacturer_id": 0,
+  "model_id": 0,
+  "vin_code": "SCA1S684X4UX07444"
+}
+###
+
+POST http://127.0.0.1:8000/v1/vehicle/
+Content-Type: application/json
+
+{
+  "manufacturer_id": 0,
+  "model_id": 0,
+  "vin_code": "SCA1S684X4UX0744422"
+}
+
+###

@@ -39,7 +39,8 @@ def test_it_raises_error_if_create_same_object_car_twice():
 
 
 def test_read_main():
-    answer = {"manufacturer_id": 1, "model_id": 1, "id": 11}
-    created_car = client.get("/v1/vehicle/get/SCA1S684X4UX07444")
-    assert created_car.status_code == 200
-    assert created_car.json() == answer
+    response = client.get(f"/v1/vehicle/get/{test_car['vin_code']}")
+    assert response.status_code == 200
+    assert response.json()['manufacturer_id'] == test_car['manufacturer_id']
+    assert response.json()['model_id'] == test_car['model_id']
+
