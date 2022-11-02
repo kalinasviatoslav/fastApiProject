@@ -6,4 +6,4 @@ activate your vent
 - `uvicorn main:app --reload`
 # To run tests 
 While api is working run command 
-python -m pytest
+`python -m pytest`
