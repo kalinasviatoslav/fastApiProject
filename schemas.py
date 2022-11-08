@@ -15,4 +15,3 @@ class Car(CarBase):
 
     class Config:
         orm_mode = True
-
