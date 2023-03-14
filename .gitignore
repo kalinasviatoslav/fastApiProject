@@ -153,3 +153,4 @@ cython_debug/
 .idea/vcs.xml
 sql_app.db
 .DS_Store
+.idea/aws.xml
