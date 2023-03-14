@@ -10,7 +10,7 @@ jobs:
 
     runs-on: ubuntu-latest
     env:
-      MY_SECRET: ${{ secrets.MY_SECRET }}
+      MY_SECRET: ${{ secrets.TEST }}
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
