@@ -1,0 +1,30 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y sshpass
+
+      - name: Terminate existing Python process
+        run: |
+          sshpass -p ${{ secrets.SSH_KEY }} ssh -o stricthostkeychecking=no user@your-ec2-instance-ip-address "sudo pkill -f 'python new.py'"
+
+      - name: Deploy code
+        run: |
+          sshpass -p ${{ secrets.SSH_KEY }} scp -o stricthostkeychecking=no -r ./ ec2-user@ec2-18-209-231-66.compute-1.amazonaws.com/home/ec2-user/NEW
+
+      - name: Start new server
+        run: |
+          sshpass -p ${{ secrets.SSH_KEY }} ssh -o stricthostkeychecking=no ec2-user@ec2-18-209-231-66.compute-1.amazonaws.com" cd /path/to/your/code && nohup python myapp.py > server.log &"
