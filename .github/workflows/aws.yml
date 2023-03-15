@@ -17,10 +17,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y sshpass
 
-      - name: Terminate existing Python process
-        run: |
-          sshpass -p ${{ secrets.SSH_KEY }} ssh -o stricthostkeychecking=no user@your-ec2-instance-ip-address "sudo pkill -f 'python new.py'"
-
       - name: Deploy code
         run: |
           sshpass -p ${{ secrets.SSH_KEY }} scp -o stricthostkeychecking=no -r ./ ec2-user@ec2-18-209-231-66.compute-1.amazonaws.com/home/ec2-user/NEW
